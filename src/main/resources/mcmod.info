@@ -1,0 +1,16 @@
+[
+{
+  "modid": "jukebox",
+  "name": "[SBM] Jukebox",
+  "description": "Simple mod that makes the jukebox inventory accessible",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "http://www.builtbroken.com",
+  "updateUrl": "",
+  "authorList": ["StrikerRocker"],
+  "credits": "Dmodoomsirius, Hennamann",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
