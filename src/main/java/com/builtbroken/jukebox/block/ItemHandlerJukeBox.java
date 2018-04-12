@@ -72,7 +72,7 @@ public class ItemHandlerJukeBox implements IItemHandlerModifiable
                 //Set state
                 setPlayState(jukebox, true);
 
-                //Play insert audio
+                //Trigger record to play
                 jukebox.getWorld().playEvent(null, 1010, jukebox.getPos(), Item.getIdFromItem(stack.getItem()));
             }
             return ItemStack.EMPTY;
@@ -97,10 +97,8 @@ public class ItemHandlerJukeBox implements IItemHandlerModifiable
             //Set state
             setPlayState(jukebox, false);
 
-            //Play eject audio
-            jukebox.getWorld().playEvent(1010, jukebox.getPos(), 0);
-
             //Update audio
+            jukebox.getWorld().playEvent(1010, jukebox.getPos(), 0);
             jukebox.getWorld().playRecord(jukebox.getPos(), null);
         }
         return stack;
