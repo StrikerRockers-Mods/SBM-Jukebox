@@ -10,6 +10,12 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import static com.builtbroken.jukebox.JukeBox.*;
 
+/**
+ * Simple mod to improve usability of the jukebox
+ *
+ * @see <a href="https://github.com/BuiltBrokenModding/VoltzEngine/blob/development/license.md">License</a> for what you can and can't do with the code.
+ * Created by StrikerRocker on 4/7/2018.
+ */
 @Mod.EventBusSubscriber()
 @Mod(modid = DOMAIN, name = NAME, version = VERSION)
 public class JukeBox
