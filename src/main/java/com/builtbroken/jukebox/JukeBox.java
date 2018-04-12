@@ -1,6 +1,6 @@
 package com.builtbroken.jukebox;
 
-import com.builtbroken.jukebox.block.JukeBoxProvider;
+import com.builtbroken.jukebox.block.CapProviderJukeBox;
 import net.minecraft.block.BlockJukebox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
@@ -12,8 +12,8 @@ import static com.builtbroken.jukebox.JukeBox.*;
 
 @Mod.EventBusSubscriber()
 @Mod(modid = DOMAIN, name = NAME, version = VERSION)
-public class JukeBox {
-    
+public class JukeBox
+{
     public static final String DOMAIN = "jukebox";
     public static final String NAME = "[SBM] Jukebox";
     public static final String PREFIX = DOMAIN + ":";
@@ -25,13 +25,15 @@ public class JukeBox {
     public static final String MC_VERSION = "@MC@";
     public static final String VERSION = MC_VERSION + "-" + MAJOR_VERSION + "." + MINOR_VERSION + "." + REVISION_VERSION + "." + BUILD_VERSION;
 
-    @Mod.Instance()
+    @Mod.Instance(DOMAIN)
     public static JukeBox INSTANCE;
 
     @SubscribeEvent
-    public static void onAttachCap(AttachCapabilitiesEvent<TileEntity> event) {
-        if (event.getObject() instanceof BlockJukebox.TileEntityJukebox) {
-            event.addCapability(new ResourceLocation("jukebox", "itemhandler"), new JukeBoxProvider((BlockJukebox.TileEntityJukebox) event.getObject()));
+    public static void onAttachCap(AttachCapabilitiesEvent<TileEntity> event)
+    {
+        if (event.getObject() instanceof BlockJukebox.TileEntityJukebox)
+        {
+            event.addCapability(new ResourceLocation("jukebox", "itemhandler"), new CapProviderJukeBox((BlockJukebox.TileEntityJukebox) event.getObject()));
         }
     }
 }

@@ -9,12 +9,11 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 
 import javax.annotation.Nonnull;
 
-public class JukeBoxHandler implements IItemHandlerModifiable
+public class ItemHandlerJukeBox implements IItemHandlerModifiable
 {
+    private final BlockJukebox.TileEntityJukebox jukebox;
 
-    private BlockJukebox.TileEntityJukebox jukebox;
-
-    public JukeBoxHandler(BlockJukebox.TileEntityJukebox tileEntityJukebox)
+    public ItemHandlerJukeBox(BlockJukebox.TileEntityJukebox tileEntityJukebox)
     {
         this.jukebox = tileEntityJukebox;
     }
