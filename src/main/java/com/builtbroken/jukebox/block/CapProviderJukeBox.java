@@ -1,13 +1,11 @@
 package com.builtbroken.jukebox.block;
 
-import net.minecraft.block.BlockJukebox;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.tileentity.JukeboxTileEntity;
+import net.minecraft.util.Direction;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 /**
  * Provider for {@link ItemHandlerJukeBox}
@@ -17,28 +15,16 @@ import javax.annotation.Nullable;
  */
 public class CapProviderJukeBox implements ICapabilityProvider
 {
-    private final BlockJukebox.TileEntityJukebox jukebox;
+    private LazyOptional inventoryHolder;
 
-    public CapProviderJukeBox(BlockJukebox.TileEntityJukebox jukebox)
+    public CapProviderJukeBox(JukeboxTileEntity jukebox)
     {
-        this.jukebox = jukebox;
+        this.inventoryHolder = LazyOptional.of(() -> new ItemHandlerJukeBox(jukebox));
     }
 
     @Override
-    public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing enumFacing)
+    public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side)
     {
-        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY;
-    }
-
-    @Nullable
-    @Override
-    public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing enumFacing)
-    {
-        if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
-        {
-            //noinspection SingleStatementInBlock
-            return (T) new ItemHandlerJukeBox(jukebox);
-        }
-        return null;
+        return cap.orEmpty(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, inventoryHolder);
     }
 }

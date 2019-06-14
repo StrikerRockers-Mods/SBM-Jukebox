@@ -1,14 +1,15 @@
 package com.builtbroken.jukebox;
 
+import static com.builtbroken.jukebox.JukeBox.DOMAIN;
+
 import com.builtbroken.jukebox.block.CapProviderJukeBox;
-import net.minecraft.block.BlockJukebox;
+
+import net.minecraft.tileentity.JukeboxTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import static com.builtbroken.jukebox.JukeBox.*;
 
 /**
  * Simple mod to improve usability of the jukebox
@@ -17,7 +18,7 @@ import static com.builtbroken.jukebox.JukeBox.*;
  * Created by StrikerRocker on 4/7/2018.
  */
 @Mod.EventBusSubscriber()
-@Mod(modid = DOMAIN, name = NAME, version = VERSION)
+@Mod(DOMAIN)
 public class JukeBox
 {
     public static final String DOMAIN = "jukebox";
@@ -31,15 +32,12 @@ public class JukeBox
     public static final String MC_VERSION = "@MC@";
     public static final String VERSION = MC_VERSION + "-" + MAJOR_VERSION + "." + MINOR_VERSION + "." + REVISION_VERSION + "." + BUILD_VERSION;
 
-    @Mod.Instance(DOMAIN)
-    public static JukeBox INSTANCE;
-
     @SubscribeEvent
     public static void onAttachCap(AttachCapabilitiesEvent<TileEntity> event)
     {
-        if (event.getObject() instanceof BlockJukebox.TileEntityJukebox)
+        if (event.getObject() instanceof JukeboxTileEntity)
         {
-            event.addCapability(new ResourceLocation("jukebox", "itemhandler"), new CapProviderJukeBox((BlockJukebox.TileEntityJukebox) event.getObject()));
+            event.addCapability(new ResourceLocation("jukebox", "itemhandler"), new CapProviderJukeBox((JukeboxTileEntity) event.getObject()));
         }
     }
 }

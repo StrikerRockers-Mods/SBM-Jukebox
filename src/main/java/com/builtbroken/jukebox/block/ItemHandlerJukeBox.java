@@ -1,13 +1,14 @@
 package com.builtbroken.jukebox.block;
 
-import net.minecraft.block.BlockJukebox;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemRecord;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.items.IItemHandlerModifiable;
-
 import javax.annotation.Nonnull;
+
+import net.minecraft.block.BlockState;
+import net.minecraft.block.JukeboxBlock;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.MusicDiscItem;
+import net.minecraft.tileentity.JukeboxTileEntity;
+import net.minecraftforge.items.IItemHandlerModifiable;
 
 /**
  * Wrapper for {@link BlockJukebox.TileEntityJukebox} to give access to record as an inventory
@@ -17,9 +18,9 @@ import javax.annotation.Nonnull;
  */
 public class ItemHandlerJukeBox implements IItemHandlerModifiable
 {
-    private final BlockJukebox.TileEntityJukebox jukebox;
+    private final JukeboxTileEntity jukebox;
 
-    public ItemHandlerJukeBox(BlockJukebox.TileEntityJukebox tileEntityJukebox)
+    public ItemHandlerJukeBox(JukeboxTileEntity tileEntityJukebox)
     {
         this.jukebox = tileEntityJukebox;
     }
@@ -62,7 +63,7 @@ public class ItemHandlerJukeBox implements IItemHandlerModifiable
         {
             throw new IndexOutOfBoundsException();
         }
-        if (stack.getItem() instanceof ItemRecord && getStackInSlot(slot).isEmpty())
+        if (stack.getItem() instanceof MusicDiscItem && getStackInSlot(slot).isEmpty())
         {
             if (!simulate)
             {
@@ -99,18 +100,17 @@ public class ItemHandlerJukeBox implements IItemHandlerModifiable
 
             //Update audio
             jukebox.getWorld().playEvent(1010, jukebox.getPos(), 0);
-            jukebox.getWorld().playRecord(jukebox.getPos(), null);
         }
         return stack;
     }
 
-    protected void setPlayState(BlockJukebox.TileEntityJukebox jukebox, boolean b)
+    protected void setPlayState(JukeboxTileEntity jukebox, boolean b)
     {
         //Set state
-        IBlockState state = jukebox.getWorld().getBlockState(jukebox.getPos());
-        if (state.getBlock() instanceof BlockJukebox)
+        BlockState state = jukebox.getWorld().getBlockState(jukebox.getPos());
+        if (state.getBlock() instanceof JukeboxBlock)
         {
-            jukebox.getWorld().setBlockState(jukebox.getPos(), state.withProperty(BlockJukebox.HAS_RECORD, Boolean.valueOf(b)), 2);
+            jukebox.getWorld().setBlockState(jukebox.getPos(), state.with(JukeboxBlock.HAS_RECORD, Boolean.valueOf(b)), 2);
         }
     }
 
@@ -122,5 +122,11 @@ public class ItemHandlerJukeBox implements IItemHandlerModifiable
             throw new IndexOutOfBoundsException();
         }
         return 1;
+    }
+
+    @Override
+    public boolean isItemValid(int slot, ItemStack stack)
+    {
+        return stack.getItem() instanceof MusicDiscItem;
     }
 }
