@@ -1,15 +1,14 @@
 package com.builtbroken.jukebox;
 
-import static com.builtbroken.jukebox.JukeBox.DOMAIN;
-
 import com.builtbroken.jukebox.block.CapProviderJukeBox;
-
 import net.minecraft.tileentity.JukeboxTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import static com.builtbroken.jukebox.JukeBox.DOMAIN;
 
 /**
  * Simple mod to improve usability of the jukebox
@@ -22,8 +21,6 @@ import net.minecraftforge.fml.common.Mod;
 public class JukeBox
 {
     public static final String DOMAIN = "jukebox";
-    public static final String NAME = "[SBM] Jukebox";
-    public static final String PREFIX = DOMAIN + ":";
 
     public static final String MAJOR_VERSION = "@MAJOR@";
     public static final String MINOR_VERSION = "@MINOR@";

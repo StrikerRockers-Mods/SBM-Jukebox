@@ -20,3 +20,6 @@ gradle-app.setting
 /.settings
 .classpath
 .project
+run/
+
+\.idea/
