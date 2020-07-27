@@ -9,11 +9,11 @@ import net.minecraftforge.items.CapabilityItemHandler;
 
 /**
  * Provider for {@link ItemHandlerJukeBox}
- *
+ * <p>
  * Created by StrikerRocker on 4/7/2018.
  */
 public class CapProviderJukeBox implements ICapabilityProvider {
-    private LazyOptional inventoryHolder;
+    private final LazyOptional inventoryHolder;
 
     public CapProviderJukeBox(JukeboxTileEntity jukebox) {
         this.inventoryHolder = LazyOptional.of(() -> new ItemHandlerJukeBox(jukebox));

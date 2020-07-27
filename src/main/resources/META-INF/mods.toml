@@ -20,6 +20,6 @@ description='''Simple mod that makes the jukebox inventory accessible''' #mandat
 [[dependencies.jukebox]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.15,1.16)"
+    versionRange="[1.16,)"
     ordering="NONE"
     side="BOTH"
