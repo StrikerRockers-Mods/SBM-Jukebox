@@ -12,7 +12,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.16.1-1.0.1'
+version = '1.16.1-1.0.2'
 group = 'jukebox'
 archivesBaseName = 'SBM-Jukebox'
 
@@ -36,7 +36,7 @@ minecraft {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.1-32.0.75'
+    minecraft 'net.minecraftforge:forge:1.16.1-32.0.92'
 }
 
 jar {
