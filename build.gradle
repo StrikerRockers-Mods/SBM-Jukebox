@@ -12,6 +12,13 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
+repositories {
+    maven {
+        name = "Gigahertz maven/mcp spread sheet"
+        url = "https://www.dogforce-games.com/maven/"
+    }
+}
+
 version = '1.16.1-1.0.2'
 group = 'jukebox'
 archivesBaseName = 'SBM-Jukebox'
@@ -19,7 +26,7 @@ archivesBaseName = 'SBM-Jukebox'
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 minecraft {
-    mappings channel: 'snapshot', version: '20200723-1.16.1'
+    mappings channel: 'snapshot', version: '20200820-1.16.1'
 
     runs {
         client {
@@ -36,7 +43,7 @@ minecraft {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.1-32.0.92'
+    minecraft 'net.minecraftforge:forge:1.16.2-33.0.37'
 }
 
 jar {
