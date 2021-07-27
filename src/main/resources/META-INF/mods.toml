@@ -1,25 +1,25 @@
-modLoader="javafml" #mandatory
-loaderVersion="[30,)" #mandatory
-license="MIT"
-issueTrackerURL="https://github.com/StrikerRockers-Mods/SBM-JukeBox/issues"
-displayURL="http://minecraft.curseforge.com/projects/sbm-jukebox"
-authors="StrikerRocker"
+modLoader = "javafml" #mandatory
+loaderVersion = "[35,)" #mandatory
+license = "MIT"
+issueTrackerURL = "https://github.com/StrikerRockers-Mods/SBM-JukeBox/issues"
+displayURL = "http://minecraft.curseforge.com/projects/sbm-jukebox"
+authors = "StrikerRocker"
 
 [[mods]] #mandatory
-modId="jukebox" #mandatory
-version="${file.jarVersion}" #mandatory
-displayName="[SBM] Jukebox" #mandatory
-description='''Simple mod that makes the jukebox inventory accessible''' #mandatory
+modId = "jukebox" #mandatory
+version = "${file.jarVersion}" #mandatory
+displayName = "[SBM] Jukebox" #mandatory
+description = '''Simple mod that makes the jukebox inventory accessible''' #mandatory
 
 [[dependencies.jukebox]]
-    modId="forge"
-    mandatory=true
-    versionRange="[30,)"
-    ordering="NONE"
-    side="BOTH"
+modId = "forge"
+mandatory = true
+versionRange = "[35,)"
+ordering = "NONE"
+side = "BOTH"
 
 [[dependencies.jukebox]]
-    modId="minecraft"
+modId = "minecraft"
     mandatory=true
     versionRange="[1.16,)"
     ordering="NONE"

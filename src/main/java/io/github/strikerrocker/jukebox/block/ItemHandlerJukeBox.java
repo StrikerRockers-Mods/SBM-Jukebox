@@ -56,7 +56,7 @@ public class ItemHandlerJukeBox implements IItemHandlerModifiable {
             if (!simulate) {
                 jukebox.setRecord(stack);
                 setPlayState(jukebox, true);
-                jukebox.getWorld().playEvent(null, 1010, jukebox.getPos(), Item.getIdFromItem(stack.getItem()));
+                jukebox.getLevel().levelEvent(null, 1010, jukebox.getBlockPos(), Item.getId(stack.getItem()));
             }
             return ItemStack.EMPTY;
         }
@@ -71,17 +71,17 @@ public class ItemHandlerJukeBox implements IItemHandlerModifiable {
         }
         ItemStack stack = jukebox.getRecord();
         if (!simulate) {
-            jukebox.clear();
+            jukebox.clearContent();
             setPlayState(jukebox, false);
-            jukebox.getWorld().playEvent(1010, jukebox.getPos(), 0);
+            jukebox.getLevel().levelEvent(1010, jukebox.getBlockPos(), 0);
         }
         return stack;
     }
 
     private void setPlayState(JukeboxTileEntity jukebox, boolean b) {
-        BlockState state = jukebox.getWorld().getBlockState(jukebox.getPos());
+        BlockState state = jukebox.getLevel().getBlockState(jukebox.getBlockPos());
         if (state.getBlock() instanceof JukeboxBlock) {
-            jukebox.getWorld().setBlockState(jukebox.getPos(), state.with(JukeboxBlock.HAS_RECORD, b), 1);
+            jukebox.getLevel().setBlock(jukebox.getBlockPos(), state.setValue(JukeboxBlock.HAS_RECORD, b), 1);
         }
     }
 
