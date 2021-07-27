@@ -1,22 +1,20 @@
 package io.github.strikerrocker.jukebox.block;
 
-import net.minecraft.tileentity.JukeboxTileEntity;
-import net.minecraft.util.Direction;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.entity.JukeboxBlockEntity;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
 
 /**
- * Provider for {@link ItemHandlerJukeBox}
- * <p>
- * Created by StrikerRocker on 4/7/2018.
+ * Provider for {@link JukeboxBlockEntity}
  */
-public class CapProviderJukeBox implements ICapabilityProvider {
+public class CapProviderJukebox implements ICapabilityProvider {
     private final LazyOptional inventoryHolder;
 
-    public CapProviderJukeBox(JukeboxTileEntity jukebox) {
-        this.inventoryHolder = LazyOptional.of(() -> new ItemHandlerJukeBox(jukebox));
+    public CapProviderJukebox(JukeboxBlockEntity jukebox) {
+        this.inventoryHolder = LazyOptional.of(() -> new ItemHandlerJukebox(jukebox));
     }
 
     @Override
