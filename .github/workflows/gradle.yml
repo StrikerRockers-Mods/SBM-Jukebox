@@ -9,7 +9,7 @@ jobs:
         uses: actions/setup-java@v2.1.0
         with:
           distribution: 'adopt'
-          java-version: '16'
+          java-version: '17'
       - name: "Build"
         uses: eskatos/gradle-command-action@v1
         with:
