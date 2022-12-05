@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "sbmjukebox",
+  "version": "${version}",
+  "name": "SBM-Jukebox",
+  "description": "Simple mod that makes the jukebox inventory accessible",
+  "authors": [
+    "StrikerRocker"
+  ],
+  "contact": {
+    "sources": "https://github.com/StrikerRockers-Mods/SBM-Jukebox-fabric",
+    "issues": "https://github.com/StrikerRockers-Mods/SBM-Jukebox-fabric/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/sbmjukebox/icon.png",
+  "environment": "*",
+  "entrypoints": {
+  },
+  "mixins": [
+    "sbmjukebox.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.0",
+    "minecraft": "1.19.x",
+    "java": ">=17"
+  }
+}

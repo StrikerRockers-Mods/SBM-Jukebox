@@ -6,19 +6,19 @@ displayURL = "http://minecraft.curseforge.com/projects/sbm-jukebox"
 authors = "StrikerRocker"
 
 [[mods]] #mandatory
-modId = "jukebox" #mandatory
+modId = "sbmjukebox" #mandatory
 version = "${file.jarVersion}" #mandatory
 displayName = "[SBM] Jukebox" #mandatory
 description = '''Simple mod that makes the jukebox inventory accessible''' #mandatory
 
-[[dependencies.jukebox]]
+[[dependencies.sbmjukebox]]
 modId = "forge"
 mandatory = true
 versionRange = "[41,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.jukebox]]
+[[dependencies.sbmjukebox]]
 modId = "minecraft"
 mandatory = true
 versionRange = "[1.19,)"
